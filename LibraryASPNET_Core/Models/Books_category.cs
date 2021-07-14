@@ -6,11 +6,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LibraryASPNET_Core.Models
 {
-    public class Books
+    public class Books_category
     {
         [Required]
         [Key]
         public int Id { get; set; }
-        public string Title { get; set; }        
+        public int Category_id { get; set; }
+        public int Book_id { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
+        public ICollection<Books> Books { get; set; }
     }
 }

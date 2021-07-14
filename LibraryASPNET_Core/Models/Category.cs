@@ -9,7 +9,8 @@ namespace LibraryASPNET_Core.Models
     public class Category
     {
         [Required]
+        [Key]
         public int Id { get; set; }
-        public string Name_Category { get; set; }
+        public string Name_Category { get; set; }        
     }
 }
