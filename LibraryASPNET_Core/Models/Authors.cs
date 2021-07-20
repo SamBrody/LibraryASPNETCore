@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LibraryASPNET_Core.Models
 {
-    public class Reader
+    public class Authors
     {
         [Required]
         [Key]
@@ -15,9 +15,7 @@ namespace LibraryASPNET_Core.Models
         public string Last_Name { get; set; }
         public string Patronymic { get; set; }
         [DataType(DataType.Date)]
-        public DateTime RegistrationDate { get; set; }
-        [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
-        public virtual ICollection<Books> BooksObj { get; set; }
+        public virtual ICollection<Authors_Books> Authors_BooksObj { get; set; }
     }
 }

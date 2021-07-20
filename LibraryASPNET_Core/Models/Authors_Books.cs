@@ -6,15 +6,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LibraryASPNET_Core.Models
 {
-    public class Books_tags
+    public class Authors_Books
     {
         [Required]
         [Key]
         public int Id { get; set; }
-        public int Tag_id { get; set; }
+        public int Author_id { get; set; }
         public int Book_id { get; set; }
 
-        public virtual ICollection<Tags> TagsObj { get; set; }
+        public virtual ICollection<Authors> AuthorsObj { get; set; }
         public virtual ICollection<Books> BooksObj { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace LibraryASPNET_Core.Models
         [Required]
         [Key]
         public int Id { get; set; }
-        public string Name_Category { get; set; }        
+        public string Name_Category { get; set; }
+        public virtual ICollection<Books_category> Books_CategoriesObj { get; set; }
     }
 }

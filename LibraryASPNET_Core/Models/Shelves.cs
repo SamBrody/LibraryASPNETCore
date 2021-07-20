@@ -12,7 +12,6 @@ namespace LibraryASPNET_Core.Models
         [Key]
         public int Id { get; set; }
         public string Name_Shelf { get; set; }
-        public int Book_id { get; set; }
-        public ICollection<Books> Books { get; set; }
+        public virtual ICollection<Books> BooksObj { get; set; }
     }
 }
