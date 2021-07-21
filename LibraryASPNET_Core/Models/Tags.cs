@@ -11,7 +11,7 @@ namespace LibraryASPNET_Core.Models
         [Required]
         [Key]
         public int Id { get; set; }
-        public string Name_Tag { get; set; }
+        public string Name { get; set; }
         public virtual ICollection<Books_tags> Books_TagObj { get; set; }
     }
 }

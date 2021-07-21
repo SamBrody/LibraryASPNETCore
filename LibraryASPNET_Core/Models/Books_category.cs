@@ -11,10 +11,10 @@ namespace LibraryASPNET_Core.Models
         [Required]
         [Key]
         public int Id { get; set; }
-        public int Category_id { get; set; }
-        public int Book_id { get; set; }
+        public int Book_Id { get; set; }
+        public int Category_Id { get; set; }
 
-        public virtual ICollection<Category> CategoriesObj { get; set; }
         public virtual ICollection<Books> BooksObj { get; set; }
+        public virtual ICollection<Category> CategoriesObj { get; set; }        
     }
 }

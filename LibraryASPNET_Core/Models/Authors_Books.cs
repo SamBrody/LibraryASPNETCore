@@ -11,8 +11,8 @@ namespace LibraryASPNET_Core.Models
         [Required]
         [Key]
         public int Id { get; set; }
-        public int Author_id { get; set; }
-        public int Book_id { get; set; }
+        public int Author_Id { get; set; }
+        public int Book_Id { get; set; }
 
         public virtual ICollection<Authors> AuthorsObj { get; set; }
         public virtual ICollection<Books> BooksObj { get; set; }
