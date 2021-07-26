@@ -11,12 +11,12 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Authors_",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    First_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Patronymic = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Last_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    First_Name = table.Column<string>(nullable: true),
+                    Patronymic = table.Column<string>(nullable: true),
+                    Last_Name = table.Column<string>(nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -27,9 +27,9 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Categories_",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,13 +40,13 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Readers_",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    First_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Patronymic = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Last_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    First_Name = table.Column<string>(nullable: true),
+                    Patronymic = table.Column<string>(nullable: true),
+                    Last_Name = table.Column<string>(nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: false),
+                    RegistrationDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -57,9 +57,9 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Shelves_",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,9 +70,9 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Tags_",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,13 +83,13 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Books_",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhotoPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TakeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Shelf_Id = table.Column<int>(type: "int", nullable: false),
-                    Reader_Id = table.Column<int>(type: "int", nullable: false)
+                    Title = table.Column<string>(nullable: true),
+                    PhotoPath = table.Column<string>(nullable: true),
+                    TakeDate = table.Column<DateTime>(nullable: false),
+                    Shelf_Id = table.Column<int>(nullable: false),
+                    Reader_Id = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -112,9 +112,9 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Authors_Books_",
                 columns: table => new
                 {
-                    Author_Id = table.Column<int>(type: "int", nullable: false),
-                    Book_Id = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Author_Id = table.Column<int>(nullable: false),
+                    Book_Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
@@ -138,9 +138,9 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Books_Categories_",
                 columns: table => new
                 {
-                    Book_Id = table.Column<int>(type: "int", nullable: false),
-                    Category_Id = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Book_Id = table.Column<int>(nullable: false),
+                    Category_Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>
@@ -164,9 +164,9 @@ namespace LibraryASPNET_Core.Migrations
                 name: "Books_Tags_",
                 columns: table => new
                 {
-                    Book_Id = table.Column<int>(type: "int", nullable: false),
-                    Tag_Id = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Book_Id = table.Column<int>(nullable: false),
+                    Tag_Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1")
                 },
                 constraints: table =>

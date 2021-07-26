@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryASPNET_Core.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20210723183756_initDB")]
+    [Migration("20210724122447_initDB")]
     partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("LibraryASPNET_Core.Models.Authors", b =>
@@ -255,10 +255,6 @@ namespace LibraryASPNET_Core.Migrations
                         .HasForeignKey("Book_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AuthorsObj");
-
-                    b.Navigation("BooksObj");
                 });
 
             modelBuilder.Entity("LibraryASPNET_Core.Models.Books", b =>
@@ -274,10 +270,6 @@ namespace LibraryASPNET_Core.Migrations
                         .HasForeignKey("Shelf_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ReaderObj");
-
-                    b.Navigation("ShelfObj");
                 });
 
             modelBuilder.Entity("LibraryASPNET_Core.Models.Books_category", b =>
@@ -293,10 +285,6 @@ namespace LibraryASPNET_Core.Migrations
                         .HasForeignKey("Category_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("BooksObj");
-
-                    b.Navigation("CategoriesObj");
                 });
 
             modelBuilder.Entity("LibraryASPNET_Core.Models.Books_tags", b =>
@@ -312,44 +300,6 @@ namespace LibraryASPNET_Core.Migrations
                         .HasForeignKey("Tag_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("BooksObj");
-
-                    b.Navigation("TagsObj");
-                });
-
-            modelBuilder.Entity("LibraryASPNET_Core.Models.Authors", b =>
-                {
-                    b.Navigation("Authors_BooksObj");
-                });
-
-            modelBuilder.Entity("LibraryASPNET_Core.Models.Books", b =>
-                {
-                    b.Navigation("Author_BooksObj");
-
-                    b.Navigation("Books_CategoriesObj");
-
-                    b.Navigation("Books_TagObj");
-                });
-
-            modelBuilder.Entity("LibraryASPNET_Core.Models.Category", b =>
-                {
-                    b.Navigation("Books_CategoriesObj");
-                });
-
-            modelBuilder.Entity("LibraryASPNET_Core.Models.Reader", b =>
-                {
-                    b.Navigation("BooksObj");
-                });
-
-            modelBuilder.Entity("LibraryASPNET_Core.Models.Shelves", b =>
-                {
-                    b.Navigation("BooksObj");
-                });
-
-            modelBuilder.Entity("LibraryASPNET_Core.Models.Tags", b =>
-                {
-                    b.Navigation("Books_TagObj");
                 });
 #pragma warning restore 612, 618
         }
