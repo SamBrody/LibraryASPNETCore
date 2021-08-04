@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibraryASPNET_Core.Models.Books>
+﻿@model IEnumerable<Library.Domain.Models.Book>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,41 +19,43 @@
                 @Html.DisplayNameFor(model => model.PhotoPath)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TakeDate)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ShelfObj)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ReaderObj)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TakeDate)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoPath)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TakeDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ShelfObj.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReaderObj.First_Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    <image src="/images/@item.PhotoPath"
+                           height="160" width="120" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShelfObj.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReaderObj.Full_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TakeDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Описание</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

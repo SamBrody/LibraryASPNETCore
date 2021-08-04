@@ -1,15 +1,13 @@
-using LibraryASPNET_Core.Models;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+using Library.Application;
+using AutoMapper;
+using Library.Application.DTO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Library.Infrasturcture.Context;
 
 namespace LibraryASPNET_Core
 {
@@ -26,9 +24,12 @@ namespace LibraryASPNET_Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<LibraryContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer( Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllersWithViews();
+            services.AddAutoMapper(typeof(Startup));
+            // My app services
+            services.AddTransient<IBookService, BookService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
