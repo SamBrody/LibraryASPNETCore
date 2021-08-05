@@ -1,4 +1,5 @@
-﻿using Library.Domain.Models;
+﻿using Library.Application.Dto;
+using Library.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace Library.Application
         void Update(Book book);
 
         void Delete(Book book);
+
+        Book GetByID(int id);
     }
 }

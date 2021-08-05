@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Library.Application.DTO;
+using Library.Application.Dto;
 using Library.Domain.Models;
 using System;
 using System.Collections.Generic;

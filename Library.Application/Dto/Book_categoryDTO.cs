@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Library.Application.DTO
+namespace Library.Application.Dto
 {
     public class Book_categoryDTO
     {

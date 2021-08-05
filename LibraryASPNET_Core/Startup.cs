@@ -1,6 +1,6 @@
 using Library.Application;
 using AutoMapper;
-using Library.Application.DTO;
+using Library.Application.Dto;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

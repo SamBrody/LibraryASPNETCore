@@ -35,5 +35,10 @@ namespace Library.Application
         {
             throw new NotImplementedException();
         }
+
+        public Book GetByID(int id)
+        {
+            return (_libraryContext.Book_.Find(id));
+        }
     }
 }

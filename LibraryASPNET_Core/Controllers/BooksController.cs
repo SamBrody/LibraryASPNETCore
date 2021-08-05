@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Library.Infrasturcture.Context;
 using Library.Domain.Models;
 using Library.Application;
-using Library.Application.DTO;
+using Library.Application.Dto;
 
 namespace LibraryASPNET_Core.Controllers
 {
@@ -25,6 +25,7 @@ namespace LibraryASPNET_Core.Controllers
         public IActionResult Index()
         {
             var books = _Ibook.GetAll();
+
             return View(books);
         }
 
