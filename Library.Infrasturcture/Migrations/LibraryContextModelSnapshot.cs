@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LibraryASPNET_Core.Migrations
+namespace Library.Infrasturcture.Migrations
 {
     [DbContext(typeof(LibraryContext))]
     partial class LibraryContextModelSnapshot : ModelSnapshot
@@ -29,7 +29,7 @@ namespace LibraryASPNET_Core.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Full_Name")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -37,22 +37,20 @@ namespace LibraryASPNET_Core.Migrations
                     b.ToTable("Author_");
                 });
 
-            modelBuilder.Entity("Library.Domain.Models.Author_Book", b =>
+            modelBuilder.Entity("Library.Domain.Models.AuthorBook", b =>
                 {
-                    b.Property<int>("Book_Id")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Author_Id")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
-                    b.HasKey("Book_Id", "Author_Id");
+                    b.HasKey("BookId", "AuthorId");
 
-                    b.HasIndex("Author_Id");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Author_Book_");
                 });
@@ -67,10 +65,10 @@ namespace LibraryASPNET_Core.Migrations
                     b.Property<string>("PhotoPath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Reader_Id")
+                    b.Property<int>("ReaderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Shelf_Id")
+                    b.Property<int>("ShelfId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("TakeDate")
@@ -81,9 +79,9 @@ namespace LibraryASPNET_Core.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Reader_Id");
+                    b.HasIndex("ReaderId");
 
-                    b.HasIndex("Shelf_Id");
+                    b.HasIndex("ShelfId");
 
                     b.ToTable("Book_");
 
@@ -92,49 +90,45 @@ namespace LibraryASPNET_Core.Migrations
                         {
                             Id = 1,
                             PhotoPath = "infjoke.jpg",
-                            Reader_Id = 1,
-                            Shelf_Id = 1,
+                            ReaderId = 1,
+                            ShelfId = 1,
                             TakeDate = new DateTime(2021, 7, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Бесконечная шутка"
                         });
                 });
 
-            modelBuilder.Entity("Library.Domain.Models.Book_category", b =>
+            modelBuilder.Entity("Library.Domain.Models.BookCategory", b =>
                 {
-                    b.Property<int>("Book_Id")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Category_Id")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
-                    b.HasKey("Book_Id", "Category_Id");
+                    b.HasKey("BookId", "CategoryId");
 
-                    b.HasIndex("Category_Id");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Book_Category_");
                 });
 
-            modelBuilder.Entity("Library.Domain.Models.Book_tag", b =>
+            modelBuilder.Entity("Library.Domain.Models.BookTag", b =>
                 {
-                    b.Property<int>("Book_Id")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Tag_Id")
+                    b.Property<int>("TagId")
                         .HasColumnType("int");
 
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
-                    b.HasKey("Book_Id", "Tag_Id");
+                    b.HasKey("BookId", "TagId");
 
-                    b.HasIndex("Tag_Id");
+                    b.HasIndex("TagId");
 
                     b.ToTable("Book_Tag_");
                 });
@@ -191,7 +185,7 @@ namespace LibraryASPNET_Core.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Full_Name")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("RegistrationDate")
@@ -206,21 +200,21 @@ namespace LibraryASPNET_Core.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateTime(1996, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Full_Name = "Иванов Иван Иванович",
+                            FullName = "Иванов Иван Иванович",
                             RegistrationDate = new DateTime(2021, 7, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             BirthDate = new DateTime(1992, 5, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Full_Name = "Квашнин Петр Михайлович",
+                            FullName = "Квашнин Петр Михайлович",
                             RegistrationDate = new DateTime(2021, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             BirthDate = new DateTime(2001, 9, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Full_Name = "Петрухин Александр Андреевич",
+                            FullName = "Петрухин Александр Андреевич",
                             RegistrationDate = new DateTime(2021, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -289,17 +283,17 @@ namespace LibraryASPNET_Core.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Library.Domain.Models.Author_Book", b =>
+            modelBuilder.Entity("Library.Domain.Models.AuthorBook", b =>
                 {
                     b.HasOne("Library.Domain.Models.Author", "AuthorsObj")
-                        .WithMany("Author_BookObj")
-                        .HasForeignKey("Author_Id")
+                        .WithMany("AuthorBookObj")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Domain.Models.Book", "BooksObj")
-                        .WithMany("Author_BookObj")
-                        .HasForeignKey("Book_Id")
+                        .WithMany("AuthorBookObj")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -312,13 +306,13 @@ namespace LibraryASPNET_Core.Migrations
                 {
                     b.HasOne("Library.Domain.Models.Reader", "ReaderObj")
                         .WithMany("BookObj")
-                        .HasForeignKey("Reader_Id")
+                        .HasForeignKey("ReaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Domain.Models.Shelf", "ShelfObj")
                         .WithMany("BookObj")
-                        .HasForeignKey("Shelf_Id")
+                        .HasForeignKey("ShelfId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -327,17 +321,17 @@ namespace LibraryASPNET_Core.Migrations
                     b.Navigation("ShelfObj");
                 });
 
-            modelBuilder.Entity("Library.Domain.Models.Book_category", b =>
+            modelBuilder.Entity("Library.Domain.Models.BookCategory", b =>
                 {
                     b.HasOne("Library.Domain.Models.Book", "BookObj")
-                        .WithMany("Book_CategoryObj")
-                        .HasForeignKey("Book_Id")
+                        .WithMany("BookCategoryObj")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Domain.Models.Category", "CategoryObj")
-                        .WithMany("Book_CategoryObj")
-                        .HasForeignKey("Category_Id")
+                        .WithMany("BookCategoryObj")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -346,17 +340,17 @@ namespace LibraryASPNET_Core.Migrations
                     b.Navigation("CategoryObj");
                 });
 
-            modelBuilder.Entity("Library.Domain.Models.Book_tag", b =>
+            modelBuilder.Entity("Library.Domain.Models.BookTag", b =>
                 {
                     b.HasOne("Library.Domain.Models.Book", "BookObj")
-                        .WithMany("Book_TagObj")
-                        .HasForeignKey("Book_Id")
+                        .WithMany("BookTagObj")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Library.Domain.Models.Tag", "TagObj")
-                        .WithMany("Book_TagObj")
-                        .HasForeignKey("Tag_Id")
+                        .WithMany("BookTagObj")
+                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -367,21 +361,21 @@ namespace LibraryASPNET_Core.Migrations
 
             modelBuilder.Entity("Library.Domain.Models.Author", b =>
                 {
-                    b.Navigation("Author_BookObj");
+                    b.Navigation("AuthorBookObj");
                 });
 
             modelBuilder.Entity("Library.Domain.Models.Book", b =>
                 {
-                    b.Navigation("Author_BookObj");
+                    b.Navigation("AuthorBookObj");
 
-                    b.Navigation("Book_CategoryObj");
+                    b.Navigation("BookCategoryObj");
 
-                    b.Navigation("Book_TagObj");
+                    b.Navigation("BookTagObj");
                 });
 
             modelBuilder.Entity("Library.Domain.Models.Category", b =>
                 {
-                    b.Navigation("Book_CategoryObj");
+                    b.Navigation("BookCategoryObj");
                 });
 
             modelBuilder.Entity("Library.Domain.Models.Reader", b =>
@@ -396,7 +390,7 @@ namespace LibraryASPNET_Core.Migrations
 
             modelBuilder.Entity("Library.Domain.Models.Tag", b =>
                 {
-                    b.Navigation("Book_TagObj");
+                    b.Navigation("BookTagObj");
                 });
 #pragma warning restore 612, 618
         }

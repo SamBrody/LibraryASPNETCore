@@ -9,7 +9,7 @@ namespace Library.Application
 {
     public interface IBookService
     {
-        IList<Book> GetAll();
+        IList<BookDTO> GetAll();
 
         void Create(Book book);
 

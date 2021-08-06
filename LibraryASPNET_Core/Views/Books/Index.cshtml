@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Library.Domain.Models.Book>
+﻿@model IEnumerable<Library.Application.Dto.BookDTO>
 
 @{
     ViewData["Title"] = "Index";
@@ -19,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.PhotoPath)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShelfObj)
+                @Html.DisplayNameFor(model => model.ShelfDTOObj.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReaderObj)
+                @Html.DisplayNameFor(model => model.ReaderDTOObj.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TakeDate)
@@ -42,10 +42,10 @@
                            height="160" width="120" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ShelfObj.Name)
+                    @Html.DisplayFor(modelItem => item.ShelfDTOObj.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ReaderObj.Full_Name)
+                    @Html.DisplayFor(modelItem => item.ReaderDTOObj.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TakeDate)

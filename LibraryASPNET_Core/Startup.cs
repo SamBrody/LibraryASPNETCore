@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Library.Infrasturcture.Context;
+using System.Reflection;
+using Library.Application.Mappers;
 
 namespace LibraryASPNET_Core
 {
@@ -26,8 +28,8 @@ namespace LibraryASPNET_Core
             services.AddDbContext<LibraryContext>(options =>
                 options.UseSqlServer( Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllersWithViews();
-            services.AddAutoMapper(typeof(Startup));
+            services.AddControllersWithViews();  
+            services.AddAutoMapper(typeof(LibraryMappingProfile));
             // My app services
             services.AddTransient<IBookService, BookService>();
         }

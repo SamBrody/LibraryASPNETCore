@@ -9,16 +9,11 @@ using System.ComponentModel;
 namespace Library.Domain.Models
 {
     public class Author
-    {
-        [Required]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        [DisplayName("ФИО")]
-        public string Full_Name { get; set; }     
-        [DataType(DataType.Date)]
-        [DisplayName("Дата рождения")]
+    {    
+        public int Id { get; set; }        
+        public string FullName { get; set; }             
         public DateTime BirthDate { get; set; }
-        public virtual ICollection<Author_Book> Author_BookObj { get; set; }
+
+        public virtual ICollection<AuthorBook> AuthorBookObj { get; set; }
     }
 }

@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel;
+using System.Text;
 
 namespace Library.Application.Dto
 {
-    public class TagDTO
+    public class AuthorBookDTO
     {
         [Required]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [DisplayName("Название")]
-        public string Name { get; set; }
+        public int AuthorId { get; set; }
+        public int BookId { get; set; }  
 
-        public ICollection<BookTagDTO> BookTagDTOObj { get; set; }
+        public AuthorDTO AuthorsDTOObj { get; set; }
+        public BookDTO BooksDTOObj { get; set; }
     }
 }

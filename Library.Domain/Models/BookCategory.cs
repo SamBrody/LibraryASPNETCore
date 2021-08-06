@@ -7,14 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Domain.Models
 {
-    public class Book_category
-    {
-        [Required]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public class BookCategory
+    {        
         public int Id { get; set; }
-        public int Book_Id { get; set; }
-        public int Category_Id { get; set; }
+        public int BookId { get; set; }
+        public int CategoryId { get; set; }
 
         public virtual Book BookObj { get; set; }
         public virtual Category CategoryObj { get; set; }        

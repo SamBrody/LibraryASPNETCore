@@ -10,12 +10,9 @@ namespace Library.Domain.Models
 {
     public class Tag
     {
-        [Required]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        [DisplayName("Название")]
+        public int Id { get; set; }        
         public string Name { get; set; }
-        public virtual ICollection<Book_tag> Book_TagObj { get; set; }
+
+        public virtual ICollection<BookTag> BookTagObj { get; set; }
     }
 }

@@ -1,5 +1,8 @@
-﻿using Library.Domain.Models;
+﻿using AutoMapper;
+using Library.Application.Dto;
+using Library.Domain.Models;
 using Library.Infrasturcture.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +13,16 @@ namespace Library.Application
     public class BookService : IBookService
     {
         private readonly LibraryContext _libraryContext;
+        private readonly IMapper _mapper;
 
-        public BookService(LibraryContext libraryContext)
+        public BookService(LibraryContext libraryContext, IMapper mapper)
         {
             _libraryContext = libraryContext;
+            _mapper = mapper;
         }
 
         public void Create(Book book)
-        {         
+        {            
             _libraryContext.Add(book);
         }
 
@@ -26,9 +31,11 @@ namespace Library.Application
             _libraryContext.Remove(book);
         }
 
-        public IList<Book> GetAll()
+        public IList<BookDTO> GetAll()
         {
-            return (_libraryContext.Book_.ToList());
+            var book = _libraryContext.Book_.Include(b=>b.ReaderObj).Include(b=>b.ShelfObj).ToList();
+            var bookDTOs = _mapper.Map<List<BookDTO>>(book);
+            return (bookDTOs);
         }
 
         public void Update(Book book)
