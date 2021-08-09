@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Редактирование</h1>
 
-<h4>Book</h4>
+<h4>Книга</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,39 +14,39 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <label asp-for="Title" class="control-label">Название</label>
+                <input asp-for="Title" class="form-control"/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PhotoPath" class="control-label"></label>
+                <label asp-for="PhotoPath" class="control-label">Обложка</label>
                 <input asp-for="PhotoPath" class="form-control" />
                 <span asp-validation-for="PhotoPath" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TakeDate" class="control-label"></label>
+                <label asp-for="TakeDate" class="control-label">Дата взятия</label>
                 <input asp-for="TakeDate" class="form-control" />
                 <span asp-validation-for="TakeDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ShelfId" class="control-label"></label>
-                <select asp-for="ShelfId" class="form-control" asp-items="ViewBag.Shelf_Id"></select>
-                <span asp-validation-for="ShelfId" class="text-danger"></span>
+                <label asp-for="ShelfId" class="control-label">Полка</label>
+                <select asp-for="ShelfDTOObj" class="form-control" asp-items="ViewBag.ShelfDTOObj"></select>
+                <span asp-validation-for="ShelfDTOObj" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ReaderId" class="control-label"></label>
-                <select asp-for="ReaderId" class="form-control" asp-items="ViewBag.Reader_Id"></select>
+                <label asp-for="ReaderId" class="control-label">Читатель</label>
+                <select asp-for="ReaderDTOObj" class="form-control" asp-items="ViewBag.ReaderId"></select>
                 <span asp-validation-for="ReaderId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Вернуться назад</a>
 </div>
 
 @section Scripts {

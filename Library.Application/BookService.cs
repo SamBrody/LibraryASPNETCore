@@ -21,14 +21,14 @@ namespace Library.Application
             _mapper = mapper;
         }
 
-        public void Create(Book book)
+        public void Create(BookDTO bookDTO)
         {            
-            _libraryContext.Add(book);
+            _libraryContext.Add(bookDTO);
         }
 
-        public void Delete(Book book)
+        public void Delete(BookDTO bookDTO)
         {
-            _libraryContext.Remove(book);
+            _libraryContext.Remove(bookDTO);
         }
 
         public IList<BookDTO> GetAll()
@@ -38,14 +38,24 @@ namespace Library.Application
             return (bookDTOs);
         }
 
-        public void Update(Book book)
+        public void Update(BookDTO bookDTO)
         {
             throw new NotImplementedException();
         }
 
-        public Book GetByID(int id)
+        public BookDTO GetByID(int id)
         {
-            return (_libraryContext.Book_.Find(id));
-        }
+            var bookL = _libraryContext.Book_.Include(b => b.ReaderObj).Include(b => b.ShelfObj).ToList();
+            var bookDTOs = _mapper.Map<List<BookDTO>>(bookL);
+            BookDTO book = new BookDTO();
+            foreach (var item in bookDTOs)
+            {
+                if (item.Id==id)
+                {
+                    book= item;
+                }
+            }
+            return (book);
+        }        
     }
 }

@@ -22,6 +22,6 @@ namespace Library.Application.Dto
         [DisplayName("Дата регистрации")]
         public DateTime RegistrationDate { get; set; }
 
-        public ICollection<BookDTO> BookDTOObj { get; set; }
+        //public ICollection<BookDTO> BookDTOObj { get; set; }
     }
 }

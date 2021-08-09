@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Linq;
 using Library.Application.Dto;
 using Library.Domain.Models;
 using System;
@@ -11,13 +12,14 @@ namespace Library.Application.Mappers
     {
         public LibraryMappingProfile()
         {
+            /*#region Create
             CreateMap<Author, AuthorDTO>();
             CreateMap<AuthorBook, AuthorBookDTO>().ConstructUsing(i => new AuthorBookDTO
             {
                 Id = i.Id,
-                AuthorsDTOObj = i.AuthorsObj,
+                AuthorName = i.AuthorsObj.FullName,
                 AuthorId = i.AuthorId,
-                BooksDTOObj = i.BooksObj,
+                BookTitle = i.BooksObj.Title,
                 BookId = i.BookId
             });
             CreateMap<Book, BookDTO>().ConstructUsing(i => new BookDTO
@@ -27,52 +29,54 @@ namespace Library.Application.Mappers
                 TakeDate = i.TakeDate,
                 Title = i.Title,
                 ShelfId = i.ShelfId,
-                ShelfDTOObj = i.ShelfObj,
+                ShelfName = i.ShelfObj.Name,
                 ReaderId = i.ReaderId,
-                ReaderDTOObj = i.ReaderObj,                
+                ReaderName = i.ReaderObj.FullName,                
             });
             CreateMap<BookCategory, BookCategoryDTO>().ConstructUsing(i => new BookCategoryDTO
             {
                 Id = i.Id,                
                 BookId = i.BookId,
-                BookObj = i.BookObj,                
+                BookTitle = i.BookObj.Title,                
                 CategoryId = i.CategoryId,
-                CategoryObj = i.CategoryObj                
+                CategoryName = i.CategoryObj.Name                
             }); 
             CreateMap<BookTag, BookTagDTO>().ConstructUsing(i => new BookTagDTO
             {
                 Id = i.Id,
-                BookObj = i.BookObj,
+                BookTitle = i.BookObj.Title,
                 BookId = i.BookId,
-                TagObj = i.TagObj,
+                TagName = i.TagObj.Name,
                 TagId = i.TagId
             });
             CreateMap<Category, CategoryDTO>().ConstructUsing(i => new CategoryDTO
             {
                 Id = i.Id,
-                Name = i.Name,
-                BookCategoryObj = i.BookCategoryObj
+                Name = i.Name               
             });
             CreateMap<Reader, ReaderDTO>().ConstructUsing(i => new ReaderDTO
             {
                 Id = i.Id,
                 BirthDate = i.BirthDate,
                 RegistrationDate = i.RegistrationDate,                
-                FullName = i.FullName,                
-                BookObj = i.BookObj
+                FullName = i.FullName
             });
             CreateMap<Shelf, ShelfDTO>().ConstructUsing(i => new ShelfDTO
             {
                 Id = i.Id,
-                Name = i.Name,
-                BookObj = i.BookObj
+                Name = i.Name
             });
             CreateMap<Tag, TagDTO>().ConstructUsing(i => new TagDTO
             {
                 Id = i.Id,
-                Name = i.Name,
-                BookTagObj = i.BookTagObj
+                Name = i.Name
             });
+            #endregion   */
+            CreateMap<Book, BookDTO>()
+                .ForMember(dest => dest.ShelfDTOObj, opt => opt.MapFrom(src => src.ShelfObj))
+                .ForMember(dest => dest.ReaderDTOObj, opt => opt.MapFrom(src => src.ReaderObj));
+            CreateMap<Shelf, ShelfDTO>();
+            CreateMap<Reader, ReaderDTO>();
         }
     }
 }

@@ -16,6 +16,6 @@ namespace Library.Application.Dto
         [DisplayName("Название")]
         public string Name { get; set; }
 
-        public ICollection<BookTagDTO> BookTagDTOObj { get; set; }
+        //public ICollection<BookTagDTO> BookTagDTOObj { get; set; }
     }
 }

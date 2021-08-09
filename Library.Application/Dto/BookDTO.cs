@@ -24,9 +24,10 @@ namespace Library.Application.Dto
         public int ShelfId { get; set; }
         public int ReaderId { get; set; }
         [DisplayName("Полка")]
-        public virtual ShelfDTO ShelfDTOObj { get; set; }
-        //public string ShelfName { get; set; }        
+        //public string ShelfName { get; set; }
+        public ShelfDTO ShelfDTOObj { get; set; }     
         [DisplayName("Читатель")]
+        //public string ReaderName { get; set; }
         public ReaderDTO ReaderDTOObj { get; set; }
     }
 }

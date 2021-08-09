@@ -32,7 +32,8 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books/Details/5
         public IActionResult Details(int id)
         {
-            return View();
+            var book =_Ibook.GetByID(id);
+            return View(book);
         }
 
         // GET: Books/Create
@@ -54,7 +55,8 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+            var book = _Ibook.GetByID(id);
+            return View(book);
         }
 
         // POST: Books/Edit/5

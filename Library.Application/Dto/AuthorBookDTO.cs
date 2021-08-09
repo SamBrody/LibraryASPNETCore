@@ -13,9 +13,10 @@ namespace Library.Application.Dto
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int AuthorId { get; set; }
-        public int BookId { get; set; }  
-
-        public AuthorDTO AuthorsDTOObj { get; set; }
-        public BookDTO BooksDTOObj { get; set; }
+        public int BookId { get; set; }
+        public string AuthorName { get; set; }
+        public string BookTitle { get; set; }
+        //public AuthorDTO AuthorsDTOObj { get; set; }
+        //public BookDTO BooksDTOObj { get; set; }
     }
 }

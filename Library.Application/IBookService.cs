@@ -11,12 +11,12 @@ namespace Library.Application
     {
         IList<BookDTO> GetAll();
 
-        void Create(Book book);
+        void Create(BookDTO bookDTO);
 
-        void Update(Book book);
+        void Update(BookDTO bookDTO);
 
-        void Delete(Book book);
+        void Delete(BookDTO bookDTO);
 
-        Book GetByID(int id);
+        BookDTO GetByID(int id);
     }
 }

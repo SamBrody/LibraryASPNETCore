@@ -14,8 +14,9 @@ namespace Library.Application.Dto
         public int Id { get; set; }
         public int BookId { get; set; }
         public int CategoryId { get; set; }
-
-        public BookDTO BookDTOObj { get; set; }
-        public CategoryDTO CategoryDTOObj { get; set; }
+        public string BookTitle { get; set; }
+        public string CategoryName { get; set; }
+        //public BookDTO BookDTOObj { get; set; }
+        //public CategoryDTO CategoryDTOObj { get; set; }
     }
 }
