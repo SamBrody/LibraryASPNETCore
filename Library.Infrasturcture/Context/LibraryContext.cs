@@ -87,10 +87,20 @@ namespace Library.Infrasturcture.Context
                     new Reader{Id=3, FullName="Петрухин Александр Андреевич", BirthDate= new DateTime(2001,9,16), RegistrationDate=new DateTime(2021,7,25)},
                 });
 
+            modelBuilder.Entity<Author>().HasData(
+                new Author[]
+                {
+                    new Author{Id=1, FullName="Дэвид Фостер", BirthDate= new DateTime(1962,2,21)},
+                    new Author{Id=2, FullName="Иван Сергеевич Тургенев", BirthDate= new DateTime(1818,11,9)}
+                });
+
+
+
             modelBuilder.Entity<Book>().HasData(
                 new Book[]
                 {
-                    new Book{Id=1, Title="Бесконечная шутка", ShelfId=1, ReaderId=1, TakeDate=new DateTime(2021,7,17), PhotoPath="infjoke.jpg"}
+                    new Book{Id=1, Title="Бесконечная шутка", ShelfId=1, ReaderId=1, TakeDate=new DateTime(2021,7,17), PhotoPath="infjoke.jpg" },
+                    new Book{Id=2, Title="Муму", ShelfId=1, ReaderId=2, TakeDate=new DateTime(2021,7,29), PhotoPath="mymy.jpg" }
                 });
             #endregion
         }

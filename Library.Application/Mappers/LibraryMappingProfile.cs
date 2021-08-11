@@ -12,8 +12,8 @@ namespace Library.Application.Mappers
     {
         public LibraryMappingProfile()
         {
-            /*#region Create
-            CreateMap<Author, AuthorDTO>();
+            #region Create
+            /*CreateMap<Author, AuthorDTO>();
             CreateMap<AuthorBook, AuthorBookDTO>().ConstructUsing(i => new AuthorBookDTO
             {
                 Id = i.Id,
@@ -70,13 +70,18 @@ namespace Library.Application.Mappers
             {
                 Id = i.Id,
                 Name = i.Name
-            });
-            #endregion   */
+            }); */
+            #endregion  
             CreateMap<Book, BookDTO>()
                 .ForMember(dest => dest.ShelfDTOObj, opt => opt.MapFrom(src => src.ShelfObj))
                 .ForMember(dest => dest.ReaderDTOObj, opt => opt.MapFrom(src => src.ReaderObj));
             CreateMap<Shelf, ShelfDTO>();
             CreateMap<Reader, ReaderDTO>();
+            CreateMap<BookDTO, Book>()
+               .ForMember(dest => dest.ShelfObj, opt => opt.MapFrom(src => src.ShelfDTOObj))
+               .ForMember(dest => dest.ReaderObj, opt => opt.MapFrom(src => src.ReaderDTOObj));
+            CreateMap<ShelfDTO, Shelf>();
+            CreateMap<ReaderDTO, Reader>();
         }
     }
 }

@@ -72,6 +72,7 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books/Delete/5
         public IActionResult Delete(int id)
         {
+            _Ibook.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 

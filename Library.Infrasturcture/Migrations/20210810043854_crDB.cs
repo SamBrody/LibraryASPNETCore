@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Library.Infrasturcture.Migrations
 {
-    public partial class renameColumnsAndFields : Migration
+    public partial class crDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

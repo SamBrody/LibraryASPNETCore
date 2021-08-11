@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Infrasturcture.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20210806072231_renameColumnsAndFields")]
-    partial class renameColumnsAndFields
+    [Migration("20210810043854_crDB")]
+    partial class crDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -26,9 +26,11 @@ namespace Library.Application
             _libraryContext.Add(bookDTO);
         }
 
-        public void Delete(BookDTO bookDTO)
+        public void Delete(int id)
         {
-            _libraryContext.Remove(bookDTO);
+            var book = _mapper.Map<Book>(GetByID(id));
+            _libraryContext.Remove(book);
+            _libraryContext.SaveChanges();
         }
 
         public IList<BookDTO> GetAll()
@@ -45,7 +47,7 @@ namespace Library.Application
 
         public BookDTO GetByID(int id)
         {
-            var bookL = _libraryContext.Book_.Include(b => b.ReaderObj).Include(b => b.ShelfObj).ToList();
+            var bookL = _libraryContext.Book_.Include(b => b.ReaderObj).Include(b => b.ShelfObj).AsNoTracking().ToList();
             var bookDTOs = _mapper.Map<List<BookDTO>>(bookL);
             BookDTO book = new BookDTO();
             foreach (var item in bookDTOs)

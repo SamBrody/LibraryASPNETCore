@@ -13,7 +13,7 @@ namespace Library.Application.Dto
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [DisplayName("Название")]
+        [DisplayName("Название книги")]
         public string Title { get; set; }
         [DisplayName("Обложка")]
         public string PhotoPath { get; set; }

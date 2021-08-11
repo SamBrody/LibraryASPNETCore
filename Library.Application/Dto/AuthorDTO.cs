@@ -13,7 +13,7 @@ namespace Library.Application.Dto
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [DisplayName("ФИО")]
+        [DisplayName("Автор")]
         public string FullName { get; set; }
         [DataType(DataType.Date)]
         [DisplayName("Дата рождения")]

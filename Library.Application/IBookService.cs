@@ -15,7 +15,7 @@ namespace Library.Application
 
         void Update(BookDTO bookDTO);
 
-        void Delete(BookDTO bookDTO);
+        void Delete(int id);
 
         BookDTO GetByID(int id);
     }
