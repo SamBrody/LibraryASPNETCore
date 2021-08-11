@@ -33,12 +33,14 @@ namespace LibraryASPNET_Core.Controllers
         public IActionResult Details(int id)
         {
             var book =_Ibook.GetByID(id);
+            ViewBag.PhotoPath = book.PhotoPath;
             return View(book);
         }
 
         // GET: Books/Create
         public IActionResult Create()
         {
+                      
             return View();
         }
 
@@ -49,6 +51,7 @@ namespace LibraryASPNET_Core.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(BookDTO booksDTO)
         {
+            _Ibook.Create(booksDTO);
             return RedirectToAction(nameof(Index));
         }
 
@@ -56,6 +59,7 @@ namespace LibraryASPNET_Core.Controllers
         public IActionResult Edit(int id)
         {
             var book = _Ibook.GetByID(id);
+            ViewBag.PhotoPath = book.PhotoPath;
             return View(book);
         }
 

@@ -20,6 +20,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="PhotoPath" class="control-label">Обложка</label>
+                <pre />
+                <image src="/images/@ViewBag.PhotoPath"
+                       height="160" width="120" />                
                 <input asp-for="PhotoPath" class="form-control" />
                 <span asp-validation-for="PhotoPath" class="text-danger"></span>
             </div>

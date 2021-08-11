@@ -17,13 +17,15 @@ namespace Library.Application
 
         public BookService(LibraryContext libraryContext, IMapper mapper)
         {
-            _libraryContext = libraryContext;
+            _libraryContext = libraryContext;            
             _mapper = mapper;
         }
 
         public void Create(BookDTO bookDTO)
-        {            
-            _libraryContext.Add(bookDTO);
+        {
+            var book = _mapper.Map<Book>(bookDTO);
+            _libraryContext.Add(book);
+            _libraryContext.SaveChanges();
         }
 
         public void Delete(int id)
