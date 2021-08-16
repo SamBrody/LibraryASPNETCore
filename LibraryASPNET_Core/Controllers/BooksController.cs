@@ -29,30 +29,38 @@ namespace LibraryASPNET_Core.Controllers
             return View(books);
         }
 
-        // GET: Books/Details/5
-        public IActionResult Details(int id)
+        // GET: Books/GetBook/5
+        public IActionResult GetBook(int? id)
         {
-            var book =_Ibook.GetByID(id);
+            if (!id.HasValue)
+                return BadRequest();
+            var book =_Ibook.GetByID(id.Value);
             ViewBag.PhotoPath = book.PhotoPath;
+            if (book == null)
+                return NotFound();
             return View(book);
         }
 
-        // GET: Books/Create
-        public IActionResult Create()
+        // GET: Books/AddBook
+        public IActionResult AddBook()
         {
                       
             return View();
         }
 
-        // POST: Books/Create
+        // POST: Books/AddBook
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(BookDTO booksDTO)
+        public IActionResult AddBook(BookDTO booksDTO)
         {
-            _Ibook.Create(booksDTO);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _Ibook.Create(booksDTO);
+                return RedirectToAction("Index");
+            }
+            return View(booksDTO);
         }
 
         // GET: Books/Edit/5
