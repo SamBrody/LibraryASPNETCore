@@ -5,6 +5,7 @@ using Library.Infrasturcture.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,8 +38,10 @@ namespace Library.Application
 
         public IList<BookDTO> GetAll()
         {
+            dynamic model = new ExpandoObject();
+            
             var book = _libraryContext.Book_.Include(b=>b.ReaderObj).Include(b=>b.ShelfObj).ToList();
-            var bookDTOs = _mapper.Map<List<BookDTO>>(book);
+            var bookDTOs = _mapper.Map<List<BookDTO>>(book);        
             return (bookDTOs);
         }
 
@@ -56,7 +59,7 @@ namespace Library.Application
             {
                 if (item.Id==id)
                 {
-                    book= item;
+                    book = item;
                 }
             }
             return (book);

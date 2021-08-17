@@ -29,15 +29,15 @@ namespace LibraryASPNET_Core.Controllers
             return View(books);
         }
 
-        // GET: Books/GetBook/5
-        public IActionResult GetBook(int? id)
+        // GET: Books/Details/5
+        public IActionResult Details(int? id)
         {
             if (!id.HasValue)
                 return BadRequest();
-            var book =_Ibook.GetByID(id.Value);
-            ViewBag.PhotoPath = book.PhotoPath;
+            var book =_Ibook.GetByID(id.Value);            
             if (book == null)
                 return NotFound();
+            ViewBag.PhotoPath = book.PhotoPath;
             return View(book);
         }
 
@@ -64,9 +64,11 @@ namespace LibraryASPNET_Core.Controllers
         }
 
         // GET: Books/Edit/5
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
-            var book = _Ibook.GetByID(id);
+            if (!id.HasValue)
+                return BadRequest();
+            var book = _Ibook.GetByID(id.Value);
             ViewBag.PhotoPath = book.PhotoPath;
             return View(book);
         }
@@ -78,14 +80,16 @@ namespace LibraryASPNET_Core.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(BookDTO booksDTO)
         {
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         // GET: Books/Delete/5
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
-            _Ibook.Delete(id);
-            return RedirectToAction(nameof(Index));
+            if (!id.HasValue)
+                return BadRequest();
+            _Ibook.Delete(id.Value);
+            return RedirectToAction("Index");
         }
 
         // POST: Books/Delete/5

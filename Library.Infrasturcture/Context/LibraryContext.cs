@@ -56,19 +56,16 @@ namespace Library.Infrasturcture.Context
             modelBuilder.Entity<Tag>().HasData(
                 new Tag[]
                 {
-                    new Tag{Id=1, Name="#war" },
-                    new Tag{Id=2, Name="#love"},
-                    new Tag{Id=3, Name="#KILLA"}
+                    new Tag{Id=1, Name="#люди" },
+                    new Tag{Id=2, Name="#собака"},
+                    new Tag{Id=3, Name="#постмодерн"}
                 });
 
             modelBuilder.Entity<Category>().HasData(
                 new Category[]
                 {
-                    new Category{Id=1, Name="Детектив"},
-                    new Category{Id=2, Name="Фантастика"},
-                    new Category{Id=3, Name="Фэнтези"},
-                    new Category{Id=4, Name="Приключения"},
-                    new Category{Id=5, Name="История"}
+                    new Category{Id=1, Name="Рассказ"},
+                    new Category{Id=2, Name="Роман"},               
                 });
 
             modelBuilder.Entity<Shelf>().HasData(
@@ -94,7 +91,28 @@ namespace Library.Infrasturcture.Context
                     new Author{Id=2, FullName="Иван Сергеевич Тургенев", BirthDate= new DateTime(1818,11,9)}
                 });
 
+            modelBuilder.Entity<AuthorBook>().HasData(
+                new AuthorBook[]
+                {
+                    new AuthorBook{Id=1, AuthorId=2, BookId=2},
+                    new AuthorBook{Id=2, AuthorId=1, BookId=1}
+                });
 
+            modelBuilder.Entity<BookCategory>().HasData(
+                new BookCategory[]
+                {
+                    new BookCategory{Id=1, CategoryId=1, BookId=2},
+                    new BookCategory{Id=2, CategoryId=2, BookId=1}
+                });
+
+            modelBuilder.Entity<BookTag>().HasData(
+                new BookTag[]
+                {
+                    new BookTag{Id=1, TagId=1, BookId=1},
+                    new BookTag{Id=2, TagId=3, BookId=1},
+                    new BookTag{Id=3, TagId=1, BookId=2},
+                    new BookTag{Id=4, TagId=2, BookId=2}
+                });
 
             modelBuilder.Entity<Book>().HasData(
                 new Book[]

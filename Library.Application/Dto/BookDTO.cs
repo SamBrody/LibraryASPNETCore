@@ -24,10 +24,16 @@ namespace Library.Application.Dto
         public int ShelfId { get; set; }
         public int ReaderId { get; set; }
         [DisplayName("Полка")]
-        //public string ShelfName { get; set; }
-        public ShelfDTO ShelfDTOObj { get; set; }     
+        public string ShelfName { get; set; }
+        //public ShelfDTO ShelfDTOObj { get; set; }     
         [DisplayName("Читатель")]
-        //public string ReaderName { get; set; }
-        public ReaderDTO ReaderDTOObj { get; set; }
+        public string ReaderName { get; set; }
+        [DisplayName("Автор(ы)")]
+        public IList<AuthorDTO> AuthorDTOs { get; set; }
+        [DisplayName("Категории")]
+        public IList<CategoryDTO> CategoryDTOs { get; set; }
+        [DisplayName("Теги")]
+        public IList<TagDTO> TagDTOs { get; set; }
+        //public ReaderDTO ReaderDTOObj { get; set; }
     }
 }

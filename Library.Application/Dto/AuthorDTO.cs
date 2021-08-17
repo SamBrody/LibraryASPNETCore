@@ -19,6 +19,6 @@ namespace Library.Application.Dto
         [DisplayName("Дата рождения")]
         public DateTime BirthDate { get; set; }
 
-        //public ICollection<AuthorBookDTO> AuthorBookDTOObj { get; set; }
+        public ICollection<AuthorBookDTO> AuthorBookDTOObj { get; set; }
     }
 }

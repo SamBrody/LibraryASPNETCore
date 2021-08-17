@@ -10,36 +10,54 @@
     <h4>Book</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Title)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PhotoPath)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             <image src="/images/@ViewBag.PhotoPath"
                    height="160" width="120" />
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AuthorDTOs)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AuthorDTOs)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShelfName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShelfName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryDTOs)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryDTOs)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TagDTOs)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TagDTOs)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReaderName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReaderName)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TakeDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TakeDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShelfDTOObj.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShelfDTOObj.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReaderDTOObj.FullName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReaderDTOObj.FullName)
         </dd>
     </dl>
 </div>

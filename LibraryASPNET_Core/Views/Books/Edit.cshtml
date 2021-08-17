@@ -15,31 +15,31 @@
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label">Название</label>
-                <input asp-for="Title" class="form-control"/>
+                <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PhotoPath" class="control-label">Обложка</label>
-                <pre />
+                
                 <image src="/images/@ViewBag.PhotoPath"
-                       height="160" width="120" />                
+                       height="160" width="120" />
                 <input asp-for="PhotoPath" class="form-control" />
                 <span asp-validation-for="PhotoPath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShelfName" class="control-label">Полка</label>
+                <select asp-for="ShelfName" class="form-control" asp-items="ViewBag.ShelfDTOObj"></select>
+                <span asp-validation-for="ShelfName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReaderName" class="control-label">Читатель</label>
+                <select asp-for="ReaderName" class="form-control" asp-items="ViewBag.ReaderId"></select>
+                <span asp-validation-for="ReaderName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TakeDate" class="control-label">Дата взятия</label>
                 <input asp-for="TakeDate" class="form-control" />
                 <span asp-validation-for="TakeDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShelfId" class="control-label">Полка</label>
-                <select asp-for="ShelfId" class="form-control" asp-items="ViewBag.ShelfDTOObj"></select>
-                <span asp-validation-for="ShelfDTOObj" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ReaderId" class="control-label">Читатель</label>
-                <select asp-for="ReaderDTOObj" class="form-control" asp-items="ViewBag.ReaderId"></select>
-                <span asp-validation-for="ReaderId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary" />
