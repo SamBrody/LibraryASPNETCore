@@ -70,6 +70,7 @@ namespace LibraryASPNET_Core.Controllers
                 return BadRequest();
             var book = _Ibook.GetByID(id.Value);
             ViewBag.PhotoPath = book.PhotoPath;
+            
             return View(book);
         }
 

@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Подробности</h1>
 
 <div>
-    <h4>Book</h4>
+    <h4>Книга</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -27,25 +27,46 @@
             @Html.DisplayNameFor(model => model.AuthorDTOs)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AuthorDTOs)
+            @foreach (var item in Model.AuthorDTOs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                </tr>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryDTOs)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.CategoryDTOs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                </tr>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TagDTOs)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.TagDTOs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                </tr>
+            }
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ShelfName)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ShelfName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CategoryDTOs)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CategoryDTOs)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TagDTOs)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TagDTOs)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ReaderName)
@@ -63,5 +84,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
-    <a asp-action="Index">Вернуться назад</a>
+    <a asp-action="Index">Вернуться к списку</a>
 </div>

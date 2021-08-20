@@ -52,17 +52,51 @@ namespace Library.Application
 
         public BookDTO GetByID(int id)
         {
-            var bookL = _libraryContext.Book_.Include(b => b.ReaderObj).Include(b => b.ShelfObj).AsNoTracking().ToList();
-            var bookDTOs = _mapper.Map<List<BookDTO>>(bookL);
-            BookDTO book = new BookDTO();
-            foreach (var item in bookDTOs)
+            var bookL = _libraryContext.Book_.Include(b => b.ReaderObj).Include(b => b.ShelfObj).AsNoTracking().FirstOrDefault(b => b.Id==id);
+            var bookDTO = _mapper.Map<BookDTO>(bookL);
+            var tags = GetBooksTags(id);
+            var authors = GetAuthorsBooks(id);
+            var categories = GetBooksCategories(id);
+            bookDTO.TagDTOs = tags;
+            bookDTO.CategoryDTOs = categories;
+            bookDTO.AuthorDTOs = authors;
+            return (bookDTO);
+        }   
+        
+        //получение тэгов
+        public IList<TagDTO> GetBooksTags (int bookId)
+        {
+            var bookTag = _libraryContext.Book_Tag_.Where(b => b.BookId == bookId).ToList();
+            List<Tag> tagsList = new List<Tag>();
+            foreach (var item in bookTag)
             {
-                if (item.Id==id)
-                {
-                    book = item;
-                }
+                tagsList.Add(_libraryContext.Tag_.FirstOrDefault(b => b.Id == item.TagId));
             }
-            return (book);
-        }        
+            return (_mapper.Map<List<TagDTO>>(tagsList));
+        }
+
+        //получение категорий
+        public IList<CategoryDTO> GetBooksCategories(int bookId)
+        {
+            var bookCategory = _libraryContext.Book_Category_.Where(b => b.BookId == bookId).ToList();
+            List<Category> categoriesList = new List<Category>();
+            foreach (var item in bookCategory)
+            {
+                categoriesList.Add(_libraryContext.Category_.FirstOrDefault(b => b.Id == item.CategoryId));
+            }
+            return (_mapper.Map<List<CategoryDTO>>(categoriesList));
+        }
+
+        //получение авторов
+        public IList<AuthorDTO> GetAuthorsBooks(int bookId)
+        {
+            var authorBook = _libraryContext.Author_Book_.Where(b => b.BookId == bookId).ToList();
+            List<Author> authorsList = new List<Author>();
+            foreach (var item in authorBook)
+            {
+                authorsList.Add(_libraryContext.Author_.FirstOrDefault(b => b.Id == item.AuthorId));
+            }
+            return (_mapper.Map<List<AuthorDTO>>(authorsList));
+        }
     }
 }

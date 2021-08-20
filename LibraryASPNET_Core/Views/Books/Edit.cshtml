@@ -8,48 +8,128 @@
 
 <h4>Книга</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+<table class="table table-striped table-hover">
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Title)</td>
+        <td>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.PhotoPath)</td>
+        <td>
+            <image src="/images/@ViewBag.PhotoPath"
+                   height="160" width="120" />
+            <hr />
+            <input asp-for="PhotoPath" class="form-control" size="20" />
+            <span asp-validation-for="PhotoPath" class="text-danger"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.AuthorDTOs)</td>
+        <td>
+            @foreach (var item in Model.AuthorDTOs)
+            {
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>                               
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.CategoryDTOs)</td>
+        <td>
+            @foreach (var item in Model.CategoryDTOs)
+            {
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.TagDTOs)</td>
+        <td>
+        @foreach (var item in Model.TagDTOs)
+        {
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ShelfName)</td>
+        <td>
+            <select asp-for="ShelfName" class="form-control" asp-items="ViewBag.ShelfId"></select>
+            <span asp-validation-for="ShelfName" class="text-danger"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ReaderName)</td>
+        <td>
+            <select asp-for="ReaderName" class="form-control" asp-items="ViewBag.ReaderId"></select>
+            <span asp-validation-for="ReaderName" class="text-danger"></span>
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.TakeDate)</td>
+        <td>
             <div class="form-group">
-                <label asp-for="Title" class="control-label">Название</label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoPath" class="control-label">Обложка</label>
-                
-                <image src="/images/@ViewBag.PhotoPath"
-                       height="160" width="120" />
-                <input asp-for="PhotoPath" class="form-control" />
-                <span asp-validation-for="PhotoPath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShelfName" class="control-label">Полка</label>
-                <select asp-for="ShelfName" class="form-control" asp-items="ViewBag.ShelfDTOObj"></select>
-                <span asp-validation-for="ShelfName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ReaderName" class="control-label">Читатель</label>
-                <select asp-for="ReaderName" class="form-control" asp-items="ViewBag.ReaderId"></select>
-                <span asp-validation-for="ReaderName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TakeDate" class="control-label">Дата взятия</label>
                 <input asp-for="TakeDate" class="form-control" />
                 <span asp-validation-for="TakeDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Сохранить" class="btn btn-primary" />
-            </div>
-        </form>
+        </td>
+    </tr>
+</table>
+
+
+
+@*<div class="form-group">
+        <label asp-for="ShelfName" class="control-label">Полка</label>
+        <select asp-for="ShelfName" class="form-control" asp-items="ViewBag.ShelfDTOObj"></select>
+        <span asp-validation-for="ShelfName" class="text-danger"></span>
     </div>
+    <div class="form-group">
+        <label asp-for="ReaderName" class="control-label">Читатель</label>
+        <select asp-for="ReaderName" class="form-control" asp-items="ViewBag.ReaderId"></select>
+        <span asp-validation-for="ReaderName" class="text-danger"></span>
+    </div>*@
+
+<div class="form-group">
+    <input type="submit" value="Сохранить" class="btn btn-primary"/>
 </div>
 
 <div>
-    <a asp-action="Index">Вернуться назад</a>
+    <a asp-action="Index">Вернуться к списку</a>
 </div>
 
 @section Scripts {
