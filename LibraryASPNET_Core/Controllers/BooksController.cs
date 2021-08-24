@@ -9,6 +9,7 @@ using Library.Infrasturcture.Context;
 using Library.Domain.Models;
 using Library.Application;
 using Library.Application.Dto;
+using Library.Application.ViewModels;
 
 namespace LibraryASPNET_Core.Controllers
 {
@@ -24,7 +25,7 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books
         public IActionResult Index()
         {
-            var books = _Ibook.GetAll();
+            var books = _Ibook.GetAllBooks();
 
             return View(books);
         }
@@ -34,7 +35,7 @@ namespace LibraryASPNET_Core.Controllers
         {
             if (!id.HasValue)
                 return BadRequest();
-            var book =_Ibook.GetByID(id.Value);            
+            var book = _Ibook.GetByID(id.Value);
             if (book == null)
                 return NotFound();
             ViewBag.PhotoPath = book.PhotoPath;
@@ -68,10 +69,18 @@ namespace LibraryASPNET_Core.Controllers
         {
             if (!id.HasValue)
                 return BadRequest();
-            var book = _Ibook.GetByID(id.Value);
-            ViewBag.PhotoPath = book.PhotoPath;
             
-            return View(book);
+            var viewmodel = new BookEditVM();
+            viewmodel.book = _Ibook.GetByID(id.Value);
+            ViewBag.PhotoPath = viewmodel.book.PhotoPath;
+
+            viewmodel.authors = _Ibook.GetAllAuthors();
+            viewmodel.tags = _Ibook.GetAllTags();
+            viewmodel.categories = _Ibook.GetAllCategories();
+            viewmodel.shelves = _Ibook.GetAllShelves();
+            viewmodel.readers = _Ibook.GetAllReaders();
+
+            return View(viewmodel);
         }
 
         // POST: Books/Edit/5
@@ -79,8 +88,13 @@ namespace LibraryASPNET_Core.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(BookDTO booksDTO)
+        public IActionResult Edit(BookEditVM bookVM)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(); 
+            }
+            _Ibook.Update(bookVM);
             return RedirectToAction("Index");
         }
 
