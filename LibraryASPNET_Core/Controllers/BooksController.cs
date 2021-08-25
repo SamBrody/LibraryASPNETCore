@@ -24,7 +24,7 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books
         public IActionResult Index()
         {
-            var books = _Ibook.GetAll();
+            var books = _Ibook.GetAllBooks();
 
             return View(books);
         }
@@ -34,7 +34,7 @@ namespace LibraryASPNET_Core.Controllers
         {
             if (!id.HasValue)
                 return BadRequest();
-            var book =_Ibook.GetByID(id.Value);            
+            var book = _Ibook.GetByID(id.Value);
             if (book == null)
                 return NotFound();
             ViewBag.PhotoPath = book.PhotoPath;
@@ -68,9 +68,18 @@ namespace LibraryASPNET_Core.Controllers
         {
             if (!id.HasValue)
                 return BadRequest();
+
             var book = _Ibook.GetByID(id.Value);
+            if (book == null)
+                return NotFound();
             ViewBag.PhotoPath = book.PhotoPath;
-            
+
+            ViewBag.Authors = _Ibook.GetAllAuthors();
+            ViewBag.Tags = _Ibook.GetAllTags();
+            ViewBag.Categories = _Ibook.GetAllCategories();
+            ViewBag.Shelves = _Ibook.GetAllShelves();
+            ViewBag.Readers = _Ibook.GetAllReaders();
+
             return View(book);
         }
 
@@ -79,8 +88,13 @@ namespace LibraryASPNET_Core.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(BookDTO booksDTO)
+        public IActionResult Edit(BookDTO bookDTO, int[] selectedAuthors, int[] selectedTags, int[] selectedCategories)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(); 
+            }
+            _Ibook.Update(bookDTO);
             return RedirectToAction("Index");
         }
 
