@@ -21,7 +21,7 @@ namespace UnitTests
         {
             //arrange
             var mock = new Mock<IBookService>();
-            mock.Setup(repo => repo.GetAll()).Returns(GetTestBooks());
+            mock.Setup(repo => repo.GetAllBooks()).Returns(GetTestBooks());
             var controller = new BooksController(mock.Object);
 
             //act

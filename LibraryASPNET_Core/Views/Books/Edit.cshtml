@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var categoryIdList = Model.CategoryDTOs.Select(x => x.Id).ToList();
+    var tagIdList = Model.TagDTOs.Select(x => x.Id).ToList();
+    var authorIdList = Model.AuthorDTOs.Select(x => x.Id).ToList();
 }
 
 <h1>Редактирование</h1>
@@ -30,27 +33,49 @@
         <tr>
             <td>@Html.DisplayNameFor(model => model.AuthorDTOs)</td>
             <td>
-                @foreach (var item in ViewBag.Authors)
+                @foreach (var author in ViewBag.Authors)
                 {
-                    <input type="checkbox" name="selectedAuthors" value="@item.Id" @(Model.AuthorDTOs.Contains(item) ? "checked=\"checked\"" : "") />@item.FullName <br />
+
+                    if (authorIdList.Contains(author.Id))
+                    {
+                        <input type="checkbox" name="selectedAuthors" value="@author.Id" checked />@author.FullName <br />
+                    }
+                    else
+                    {
+                        <input type="checkbox" name="selectedAuthors" value="@author.Id" />@author.FullName <br />
+                    }
                 }
             </td>
         </tr>
         <tr>
             <td>@Html.DisplayNameFor(model => model.CategoryDTOs)</td>
             <td>
-                @foreach (var item in ViewBag.Categories)
+                @foreach (var category in ViewBag.Categories)
                 {
-                    <input type="checkbox" name="selectedCategories" value="@item.Id" @(Model.CategoryDTOs.Contains(item) ? "checked=\"checked\"" : "") />@item.Name <br />
+                    if (categoryIdList.Contains(category.Id))
+                    {
+                        <input type="checkbox" name="selectedCategories" value="@category.Id" checked />@category.Name <br />
+                    }
+                    else
+                    {
+                        <input type="checkbox" name="selectedCategories" value="@category.Id" />@category.Name <br />
+                    }
                 }
             </td>
         </tr>
         <tr>
             <td>@Html.DisplayNameFor(model => model.TagDTOs)</td>
             <td>
-                @foreach (var item in ViewBag.Tags)
+                @foreach (var tag in ViewBag.Tags)
                 {
-                    <input type="checkbox" name="selectedTags" value="@item.Id" @(Model.TagDTOs.Contains(item) ? "checked=\"checked\"" : "") />@item.Name <br />
+                    if (tagIdList.Contains(tag.Id))
+                    {
+                        <input type="checkbox" name="selectedTags" value="@tag.Id" checked />@tag.Name <br />
+                    }
+                    else
+                    {
+                        <input type="checkbox" name="selectedTags" value="@tag.Id" />@tag.Name <br />
+                    }
                 }
             </td>
         </tr>
