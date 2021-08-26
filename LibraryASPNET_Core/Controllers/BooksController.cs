@@ -88,7 +88,7 @@ namespace LibraryASPNET_Core.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(BookDTO bookDTO, int[] selectedAuthors, int[] selectedTags, int[] selectedCategories)
+        public IActionResult Edit(BookDTO bookDTO, int[] selectedAuthors, int[] selectedCategories, int[] selectedTags, int shelfId, int readerId)
         {
             if (!ModelState.IsValid)
             {
