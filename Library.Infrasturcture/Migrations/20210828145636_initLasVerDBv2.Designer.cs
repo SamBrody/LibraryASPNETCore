@@ -4,14 +4,16 @@ using Library.Infrasturcture.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Infrasturcture.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20210828145636_initLasVerDBv2")]
+    partial class initLasVerDBv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,13 +95,13 @@ namespace Library.Infrasturcture.Migrations
                     b.Property<string>("PhotoPath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ReaderId")
+                    b.Property<int>("ReaderId")
                         .HasColumnType("int");
 
                     b.Property<int>("ShelfId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("TakeDate")
+                    b.Property<DateTime>("TakeDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
@@ -381,7 +383,8 @@ namespace Library.Infrasturcture.Migrations
                     b.HasOne("Library.Domain.Models.Reader", "ReaderObj")
                         .WithMany("BookObj")
                         .HasForeignKey("ReaderId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Library.Domain.Models.Shelf", "ShelfObj")
                         .WithMany("BookObj")

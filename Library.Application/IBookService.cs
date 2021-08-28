@@ -11,9 +11,9 @@ namespace Library.Application
     {
         IList<BookDTO> GetAllBooks();
 
-        void Create(BookDTO bookDTO);
+        void AddBook(BookDTO bookDTO, int[] selectedAuthorsId, int[] selectedCategoriesId, int[] selectedTagsId, int shelfId, int? readerId);
 
-        void Update(BookDTO bookDTO);
+        void Update(BookDTO bookDTO, int[] selectedAuthorsId, int[] selectedCategoriesId, int[] selectedTagsId, int shelfId, int? readerId);
 
         void Delete(int id);
 

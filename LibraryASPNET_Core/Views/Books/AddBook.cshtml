@@ -1,7 +1,6 @@
-﻿@model Library.Domain.Models.Book
-
+﻿@model Library.Application.Dto.BookDTO
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "AddBook";
 }
 
 <h1>Добавление</h1>
@@ -9,34 +8,104 @@
 <h4>Книга</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-4" style="margin-left:auto;margin-right:auto;width:auto">
+        <form asp-action="AddBook" style="width: auto ">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.Title)</td>
+                    <td>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.PhotoPath)</td>
+                    <td>
+                        <image src="/images/@ViewBag.PhotoPath"
+                               height="160" width="120" />
+                        <hr />
+                        <input asp-for="PhotoPath" class="form-control" size="20" />
+                        <span asp-validation-for="PhotoPath" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.AuthorDTOs)</td>
+                    <td>
+                        @foreach (var author in ViewBag.Authors)
+                        {
+                            <input type="checkbox" name="selectedAuthors" value="@author.Id" />@author.FullName <br />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.CategoryDTOs)</td>
+                    <td>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <input type="checkbox" name="selectedCategories" value="@category.Id" />@category.Name <br />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TagDTOs)</td>
+                    <td>
+                        @foreach (var tag in ViewBag.Tags)
+                        {
+                            <input type="checkbox" name="selectedTags" value="@tag.Id" />@tag.Name <br />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.ShelfName)</td>
+                    <td>
+                        <select name="shelfId" class="form-control">
+                            @foreach (var item in ViewBag.Shelves)
+                            {
+                                if (item.Id == 1)
+                                {
+                                    <option value="@item.Id" selected>@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="ShelfName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.ReaderName)</td>
+                    <td>
+                        <select name="readerId" class="form-control">
+                            @foreach (var item in ViewBag.Readers)
+                            {
+                                if (item.Id == 1)
+                                {
+                                    <option value="@item.Id" selected> @item.FullName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.Id"> @item.FullName</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="ReaderName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.DisplayNameFor(model => model.TakeDate)</td>
+                    <td>
+                        <div class="form-group">
+                            <input asp-for="TakeDate" class="form-control" />
+                            <span asp-validation-for="TakeDate" class="text-danger"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoPath" class="control-label"></label>
-                <input asp-for="PhotoPath" class="form-control" />
-                <span asp-validation-for="PhotoPath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TakeDate" class="control-label"></label>
-                <input asp-for="TakeDate" class="form-control" />
-                <span asp-validation-for="TakeDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShelfId" class="control-label"></label>
-                <select asp-for="ShelfId" class ="form-control" asp-items="ViewBag.ShelfId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ReaderId" class="control-label"></label>
-                <select asp-for="ReaderId" class ="form-control" asp-items="ViewBag.ReaderId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -14,21 +14,25 @@ namespace Library.Application.Dto
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [DisplayName("Название книги")]
+        [Required]
         public string Title { get; set; }
         [DisplayName("Обложка")]
+        [Required]
         public string PhotoPath { get; set; }
         [DisplayName("Дата взятия")]
         [DataType(DataType.Date)]
-        public DateTime TakeDate { get; set; }
+        public DateTime? TakeDate { get; set; }
 
         public int ShelfId { get; set; }
-        public int ReaderId { get; set; }
+        public int? ReaderId { get; set; }
         [DisplayName("Полка")]
+        [Required]
         public string ShelfName { get; set; }
         //public ShelfDTO ShelfDTOObj { get; set; }     
         [DisplayName("Читатель")]
         public string ReaderName { get; set; }
         [DisplayName("Автор(ы)")]
+        [Required]
         public IList<AuthorDTO> AuthorDTOs { get; set; }
         [DisplayName("Категории")]
         public IList<CategoryDTO> CategoryDTOs { get; set; }

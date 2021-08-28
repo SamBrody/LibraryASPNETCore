@@ -44,9 +44,14 @@ namespace UnitTests
             var controller = new BooksController(mock.Object);
             controller.ModelState.AddModelError("Title", "Required");
             BookDTO newBook = new BookDTO();
+            int[] authors = { 1 };
+            int[] categories = { 1, 3 };
+            int[] tags = { 2, 3 };
+            int shelf = 2;
+            int reader = 1;
 
             //act
-            var result = controller.AddBook(newBook);
+            var result = controller.AddBook(newBook, authors, categories, tags, shelf, reader);
 
             //assert
             var viewResult = Assert.IsType<ViewResult>(result);
@@ -63,15 +68,20 @@ namespace UnitTests
             {
                 Title = "Тест"
             };
+            int[] authors = { 1 };
+            int[] categories = { 1, 3 };
+            int[] tags = { 2, 3 };
+            int shelf = 2;
+            int reader = 1;
 
             //act
-            var result = controller.AddBook(newBook);
+            var result = controller.AddBook(newBook, authors, categories, tags, shelf, reader);
 
             //assert
             var redirectToActionResult = Assert.IsType<RedirectToActionResult>(result);
             Assert.Null(redirectToActionResult.ControllerName);
             Assert.Equal("Index", redirectToActionResult.ActionName);
-            mock.Verify(r => r.Create(newBook));
+            mock.Verify(r => r.AddBook(newBook, authors, categories, tags, shelf, reader));
         }
 
         #endregion

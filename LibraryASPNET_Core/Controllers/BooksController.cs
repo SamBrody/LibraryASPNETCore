@@ -44,7 +44,12 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books/AddBook
         public IActionResult AddBook()
         {
-                      
+            ViewBag.Authors = _Ibook.GetAllAuthors();
+            ViewBag.Tags = _Ibook.GetAllTags();
+            ViewBag.Categories = _Ibook.GetAllCategories();
+            ViewBag.Shelves = _Ibook.GetAllShelves();
+            ViewBag.Readers = _Ibook.GetAllReaders();
+
             return View();
         }
 
@@ -53,14 +58,10 @@ namespace LibraryASPNET_Core.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddBook(BookDTO booksDTO)
-        {
-            if (ModelState.IsValid)
-            {
-                _Ibook.Create(booksDTO);
-                return RedirectToAction("Index");
-            }
-            return View(booksDTO);
+        public IActionResult AddBook(BookDTO bookDTO, int[] selectedAuthors, int[] selectedCategories, int[] selectedTags, int shelfId, int? readerId)
+        {            
+            _Ibook.AddBook(bookDTO, selectedAuthors, selectedCategories, selectedTags, shelfId, readerId);
+            return RedirectToAction("Index");
         }
 
         // GET: Books/Edit/5
@@ -88,13 +89,13 @@ namespace LibraryASPNET_Core.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(BookDTO bookDTO, int[] selectedAuthors, int[] selectedCategories, int[] selectedTags, int shelfId, int readerId)
+        public IActionResult Edit(BookDTO bookDTO, int[] selectedAuthors, int[] selectedCategories, int[] selectedTags, int shelfId, int? readerId)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(); 
             }
-            _Ibook.Update(bookDTO);
+            _Ibook.Update(bookDTO, selectedAuthors, selectedCategories, selectedTags, shelfId, readerId);
             return RedirectToAction("Index");
         }
 

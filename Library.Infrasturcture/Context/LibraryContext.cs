@@ -71,17 +71,19 @@ namespace Library.Infrasturcture.Context
             modelBuilder.Entity<Shelf>().HasData(
                 new Shelf[]
                 {
-                    new Shelf{Id=1, Name="A" },
-                    new Shelf{Id=2, Name="B"},
-                    new Shelf{Id=3, Name="C"}
+                    new Shelf{Id=1, Name="-" },
+                    new Shelf{Id=2, Name="A" },
+                    new Shelf{Id=3, Name="B"},
+                    new Shelf{Id=4, Name="C"}
                 });
 
             modelBuilder.Entity<Reader>().HasData(
                 new Reader[]
                 {
-                    new Reader{Id=1, FullName="Иванов Иван Иванович", BirthDate= new DateTime(1996,1,16), RegistrationDate=new DateTime(2021,7,16)},
-                    new Reader{Id=2, FullName="Квашнин Петр Михайлович", BirthDate= new DateTime(1992,5,29), RegistrationDate=new DateTime(2021,6,22)},
-                    new Reader{Id=3, FullName="Петрухин Александр Андреевич", BirthDate= new DateTime(2001,9,16), RegistrationDate=new DateTime(2021,7,25)},
+                    new Reader{Id=1, FullName="-"},
+                    new Reader{Id=2, FullName="Иванов Иван Иванович", BirthDate= new DateTime(1996,1,16), RegistrationDate=new DateTime(2021,7,16)},
+                    new Reader{Id=3, FullName="Квашнин Петр Михайлович", BirthDate= new DateTime(1992,5,29), RegistrationDate=new DateTime(2021,6,22)},
+                    new Reader{Id=4, FullName="Петрухин Александр Андреевич", BirthDate= new DateTime(2001,9,16), RegistrationDate=new DateTime(2021,7,25)},
                 });
 
             modelBuilder.Entity<Author>().HasData(
@@ -117,8 +119,8 @@ namespace Library.Infrasturcture.Context
             modelBuilder.Entity<Book>().HasData(
                 new Book[]
                 {
-                    new Book{Id=1, Title="Бесконечная шутка", ShelfId=1, ReaderId=1, TakeDate=new DateTime(2021,7,17), PhotoPath="infjoke.jpg" },
-                    new Book{Id=2, Title="Муму", ShelfId=1, ReaderId=2, TakeDate=new DateTime(2021,7,29), PhotoPath="mymy.jpg" }
+                    new Book{Id=1, Title="Бесконечная шутка", ShelfId=2, ReaderId=2, TakeDate=new DateTime(2021,7,17), PhotoPath="infjoke.jpg" },
+                    new Book{Id=2, Title="Муму", ShelfId=2, ReaderId=3, TakeDate=new DateTime(2021,7,29), PhotoPath="mymy.jpg" }
                 });
             #endregion
         }
