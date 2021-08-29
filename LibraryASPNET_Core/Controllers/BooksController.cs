@@ -102,8 +102,6 @@ namespace LibraryASPNET_Core.Controllers
         // GET: Books/Delete/5
         public IActionResult Delete(int? id)
         {
-            if (!id.HasValue)
-                return BadRequest();
             _Ibook.Delete(id.Value);
             return RedirectToAction("Index");
         }
